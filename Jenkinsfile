@@ -59,6 +59,7 @@ pipeline {
 					}
 				}
 			}
+                }        
 
 		stage('Build and Publish Image') {
 			when {
