@@ -47,15 +47,13 @@ pipeline {
 						echo 'mvn -T8C test'
 					}
 				}
-				node {
-					stage('SCM') {
-						checkout scm
-					}
-					stage('SonarQube Analysis') {
-						def mvn = tool 'Default Maven';
-						withSonarQubeEnv() {
-						sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Caderonas_spring-petclinic_AX6_8LHDV0s42Ye3Pgw3"
-						}
+				stage('SCM') {
+					checkout scm
+				}
+				stage('SonarQube Analysis') {
+					def mvn = tool 'Default Maven';
+					withSonarQubeEnv() {
+					sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Caderonas_spring-petclinic_AX6_8LHDV0s42Ye3Pgw3"
 					}
 				}
 			}
